@@ -1,6 +1,6 @@
 $UserOU = "OU=Departments,DC="
 Describe "Users" {
-	Get-ADUser -Filter * -SearchBase $UserOU -Properties DisplayName | For-EachObject {
+	Get-ADUser -Filter * -SearchBase $UserOU -Properties DisplayName,HomeDrive,HomeDirectory | For-EachObject {
 		$User = $_
 		Context $User.DN {
 			It "Has the correct Surname case" {
@@ -23,6 +23,18 @@ Describe "Users" {
 				$CorrectName = "{0} {1}" -f $User.Surname, $User.GivenName
 				$User.Name | Should Be $CorrectName
 				$User.Name | Should Be $User.Name
+			}
+
+			It "Has HomeDrive set" {
+				[String]::IsNullOrEmpty($User.HomeDrive) | Should Be $False
+			}
+
+			It "Has HomeDirectory set " {
+				[String]::IsNullOrEmpty($User.HomeDirectory) | Should Be $False
+			}
+
+			It "Is disabled" {
+				$User.Enabled | Should Be $False
 			}
 		}
 
