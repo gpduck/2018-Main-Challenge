@@ -1,4 +1,4 @@
-"Departments" : [
+{"Departments" : [
 	{
 		"Name" : "Sales",
 		"OU" : "ou=sales,ou=department,dc=flawless,dc=faction",
@@ -12,3 +12,4 @@
 		"SecurityGroup" : "SalesGroup"
 	}
 ]
+}
