@@ -1,0 +1,15 @@
+{"Departments" : [
+	{
+		"Name" : "Sales",
+		"OU" : "ou=sales,ou=department,dc=flawless,dc=faction",
+		"Address" : "3 Abbey Road, St John's Wood, City of Westminster, London, England",
+		"SecurityGroup" : "SalesGroup"
+	},
+	{
+		"Name" : "Finance",
+		"OU" : "ou=financenew,ou=department,dc=flawless,dc=faction",
+		"Address" : " 1 Microsoft Way. Redmond, WA 98052-8300",
+		"SecurityGroup" : "SalesGroup"
+	}
+]
+}
