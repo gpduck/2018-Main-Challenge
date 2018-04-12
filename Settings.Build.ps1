@@ -19,7 +19,7 @@
 	$CopyRight = "2018"
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-	$Description = ""
+	$Description = "Flawless AD cmdlets"
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
 	$FunctionDir = "$PSScriptRoot\Module\Functions"
@@ -41,7 +41,7 @@
 	$UnitTestDir = "$PSScriptRoot\Tests\"
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-	$Version = "0.5"
+	$Version = "0.1"
 
 	# The local installation directory for the install task. Defaults to your home Modules location.
 	if ( $Version -ge "6.0") {
