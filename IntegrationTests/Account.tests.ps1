@@ -1,4 +1,4 @@
-$UserOU = "OU=Departments,DC="
+$UserOU = "OU=Departments,dc=flawless,dc=faction"
 Describe "Users" {
 	Get-ADUser -Filter * -SearchBase $UserOU -Properties DisplayName,HomeDrive,HomeDirectory | For-EachObject {
 		$User = $_
