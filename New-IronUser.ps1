@@ -17,6 +17,36 @@ function New-MBADUser {
 		[string]$JobTitle
 	)
 
+	DynamicParam {
+        if ($true) {
+            do {
+				#Build the Parameter Dictionary
+				$paramDictionary = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
+								
+				#Define the basic parameter information
+				$attributes = New-Object System.Management.Automation.ParameterAttribute
+				$attributes.ParameterSetName = "__AllParameterSets"
+				$attributes.Mandatory = $false
+				$attributes.HelpMessage = 'Valid Employee OUs'
+				$attributes.ValueFromPipelineByPropertyName = $true
+								
+				$ParamOptions = New-Object System.Management.Automation.ValidateSetAttribute -ArgumentList ((Get-ADOrganizationalUnit -SearchBase "OU=Departments,$($DomainDC)" -Filter *).Name.Where{$PSItem -ne 'Departments'})
+
+				$attributeCollection = New-Object -Type System.Collections.ObjectModel.Collection[System.Attribute]
+				$attributeCollection.Add($attributes)
+				$attributeCollection.Add($ParamOptions)
+								
+				$dynParam = New-Object -Type System.Management.Automation.RuntimeDefinedParameter(
+					'clientname',[String],$attributeCollection
+				)
+
+				$paramDictionary.Add('Departments', $dynParam)
+				
+                #Return the object for consumption
+                return $paramDictionary
+            }  until ($paramDictionary)
+        } #End If
+    }
 	Begin {}
 
 	Process {
