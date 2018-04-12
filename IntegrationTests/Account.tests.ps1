@@ -29,8 +29,20 @@ Describe "Users" {
 				[String]::IsNullOrEmpty($User.HomeDrive) | Should Be $False
 			}
 
-			It "Has HomeDirectory set " {
+			It "Has HomeDirectory set" {
 				[String]::IsNullOrEmpty($User.HomeDirectory) | Should Be $False
+			}
+
+			It "Has title set" {
+				[String]::IsNullOrEmpty($User.Title) | Should Be $False
+			}
+
+			It "Has department set" {
+				[String]::IsNullOrEmpty($User.Department) | Should Be $False
+			}
+
+			It "Has company set" {
+				[String]::IsNullOrEmpty($User.Company) | Should Be $False
 			}
 
 			It "Is disabled" {
